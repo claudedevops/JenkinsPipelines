@@ -20,4 +20,8 @@ node {
         //edit pom.xml distributionManagement with repository details
         //edit settings.xml with nexus-user login credentials
     }
+    stage('5.Deploy2UAT'){
+        //use deploy-to-container plugin via pipeline syntax
+        deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials1', path: '', url: 'http://3.17.149.224:8080/')], contextPath: null, war: 'target/*war'
+    }
 }
