@@ -34,4 +34,20 @@ node {
         sh "echo 'Deploy application to the customers/production' "
         deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials1', path: '', url: 'http://3.17.149.224:8080/')], contextPath: null, war: 'target/*war'
     }
+    stage('8.APM'){
+        //Application Monitoring
+        sh "echo 'monitoring and observation and alerting' "
+        sh "echo 'application performance Monitoring in progress' "
+    }
+    stage('9.emailNotification'){
+        sh "echo 'notify the team for unusual occurrences' "
+        sh "echo 'notify the team if the applications are down' "
+        sh "echo 'notify the team if the latency is higher than expected' "
+        emailext body: '''Hi Team,
+
+The build and deployment status for tesla-pipeline follows.
+
+Regards,
+Claude Eke''', recipientProviders: [buildUser(), contributor(), developers(), requestor()], subject: 'build and deployment status', to: 'claude.eke77@gmail.com'
+    }
 }
