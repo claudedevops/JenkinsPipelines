@@ -8,4 +8,7 @@ node {
         //Jenkins running on a Windows system
         //bat "git clone https://github.com/claudedevops/maven-web-application.git"
     }
+    stage('2.mvnBuild'){
+        sh "${mavenHome}/bin/mvn clean package"
+    }
 }
