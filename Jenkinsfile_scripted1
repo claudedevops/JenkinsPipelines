@@ -11,4 +11,8 @@ node {
     stage('2.mvnBuild'){
         sh "${mavenHome}/bin/mvn clean package"
     }
+    stage('3.CodeQuality'){
+        sh "${mavenHome}/bin/mvn sonar:sonar"
+        //edit pom.xml propertiesTAG with SonarQube server details
+    }
 }
