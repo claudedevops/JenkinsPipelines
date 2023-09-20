@@ -15,4 +15,9 @@ node {
         sh "${mavenHome}/bin/mvn sonar:sonar"
         //edit pom.xml propertiesTAG with SonarQube server details
     }
+    stage('4.UploadArtifacts'){
+        sh "${mavenHome}/bin/mvn deploy"
+        //edit pom.xml distributionManagement with repository details
+        //edit settings.xml with nexus-user login credentials
+    }
 }
